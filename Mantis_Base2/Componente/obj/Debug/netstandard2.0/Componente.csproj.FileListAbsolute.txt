@@ -1,0 +1,5 @@
+D:\Repos\mantis-base2\Mantis_Base2\Componente\bin\Debug\netstandard2.0\Componente.deps.json
+D:\Repos\mantis-base2\Mantis_Base2\Componente\bin\Debug\netstandard2.0\Componente.dll
+D:\Repos\mantis-base2\Mantis_Base2\Componente\obj\Debug\netstandard2.0\Componente.csprojAssemblyReference.cache
+D:\Repos\mantis-base2\Mantis_Base2\Componente\obj\Debug\netstandard2.0\Componente.AssemblyInfoInputs.cache
+D:\Repos\mantis-base2\Mantis_Base2\Componente\obj\Debug\netstandard2.0\Componente.AssemblyInfo.cs
