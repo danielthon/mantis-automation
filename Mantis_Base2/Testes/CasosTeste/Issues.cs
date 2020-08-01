@@ -3,6 +3,8 @@ using Componente.PageObjects;
 using Dados.DataObjects;
 using Dados;
 using System.Collections.Generic;
+using Relatorios;
+using NUnit.Framework.Interfaces;
 
 namespace Testes.CasosTeste
 {
@@ -12,8 +14,9 @@ namespace Testes.CasosTeste
         public List<Login> logins = Conexao.GetDadosCsv<Login>();
         public List<Issue> issues = Conexao.GetDadosCsv<Issue>();
 
+
         [Test]
-        [TestCase(TestName = "Report issue and verify")]
+        [TestCase(TestName = "Report new issue and verify")]
         public void T001()
         {
             MyViewPage main = new MyViewPage(logins[0]);
@@ -29,10 +32,28 @@ namespace Testes.CasosTeste
         public void T002()
         {
             MyViewPage main = new MyViewPage(logins[0]);
-            ReportPage repo = main.GoToReportIssue(logins[0]);
-            ViewIssuesPage view = repo.CadastrarIssue(issues[0]);
+            //incompleto
+        }
 
-            view.SearchAndVerify(issues[0]);
+
+        [SetUp]
+        public void TestSetUp()
+        {
+            string nomeFixture = TestContext.CurrentContext.Test.ClassName;
+            string nomeTest = TestContext.CurrentContext.Test.MethodName;
+            string descricaoTest = TestContext.CurrentContext.Test.Name;
+
+            Relatorio.PreTeste(nomeFixture.Substring(nomeFixture.LastIndexOf('.') + 1), nomeTest, descricaoTest);
+        }
+        [TearDown]
+        public void TestTearDown()
+        {
+            switch (TestContext.CurrentContext.Result.Outcome.Status)
+            {
+                case TestStatus.Passed: Relatorio.PosTeste(Status.Pass); break;
+                case TestStatus.Failed: Relatorio.PosTeste(Status.Fail); break;
+                default: Relatorio.PosTeste(Status.Warning); break;
+            }
         }
     }
 }

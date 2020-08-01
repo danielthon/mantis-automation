@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Componente.Comum;
+using Relatorios;
 
 namespace Testes
 {
@@ -9,6 +10,8 @@ namespace Testes
         [OneTimeSetUp]
         public static void GlobalSetUp()
         {
+            Relatorio.PrepararRelatorio();
+
             SeleniumWebDriver.IniciarDriver(
                 TestContext.Parameters.Get("browser", "chrome")
                 );
@@ -20,6 +23,8 @@ namespace Testes
         public static void GlobalTearDown()
         {
             SeleniumWebDriver.FinalizarDriver();
+
+            Relatorio.FinalizarRelatorio();
         }
     }
 }

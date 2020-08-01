@@ -1,6 +1,7 @@
 ﻿using Componente.Comum;
 using Dados.DataObjects;
 using OpenQA.Selenium;
+using Relatorios;
 using System;
 
 namespace Componente.PageObjects
@@ -15,6 +16,7 @@ namespace Componente.PageObjects
             try
             {
                 spanLogin.moveToElement();
+                Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
             }
             catch (NoSuchElementException e)
             {

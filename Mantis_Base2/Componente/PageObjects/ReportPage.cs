@@ -1,6 +1,7 @@
 ﻿using Componente.Comum;
 using Dados.DataObjects;
 using OpenQA.Selenium;
+using Relatorios;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Componente.PageObjects
             try
             {
                 dropChooseCategory.moveToElement();
+                Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
             }
             catch (NoSuchElementException e)
             {
@@ -47,7 +49,7 @@ namespace Componente.PageObjects
             txtSummary.typeText(issue.Summary);
             txtDescription.typeText(issue.Description);
             
-            if(issue.ViewStatus.ToLower() ==  "private")
+            if(issue.ViewStatus.ToLower() == "private")
                 radioPrivate.click();
 
             btnSubmitReport.Click();
@@ -55,6 +57,8 @@ namespace Componente.PageObjects
             var view = new ViewIssuesPage();
 
             issue.Id = btnRecentlyVisitedFirst.Text;
+
+            Relatorio.AddLog(Status.Pass, $"Issue cadastrada, gerada com id '{issue.Id}'");
 
             return view;
         }

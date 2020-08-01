@@ -1,6 +1,7 @@
 ﻿using Componente.Comum;
 using Dados.DataObjects;
 using OpenQA.Selenium;
+using Relatorios;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,9 +20,15 @@ namespace Componente.PageObjects
         public ReportPage SelecionarProjetoId(Login login)
         {
             dropChooseProject.dropDownSelectByValue(login.ProjetoId);
-            btnSelectProject.click();
 
-            return new ReportPage(login);
+            Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
+
+            btnSelectProject.click();
+            var repo = new ReportPage(login);
+
+            Relatorio.AddLog(Status.Pass, $"Projeto '{login.ProjetoId}' encontrado e selecionado");
+
+            return repo;
         }
     }
 }

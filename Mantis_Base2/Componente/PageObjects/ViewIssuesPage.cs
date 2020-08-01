@@ -1,6 +1,7 @@
 ﻿using Componente.Comum;
 using Dados.DataObjects;
 using OpenQA.Selenium;
+using Relatorios;
 using System;
 
 namespace Componente.PageObjects
@@ -17,6 +18,7 @@ namespace Componente.PageObjects
         public ViewIssuesPage()
         {
             txtSearch.moveToElement();
+            Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
         }
 
         public ViewPage SearchAndAccess(Issue issue)
@@ -25,6 +27,8 @@ namespace Componente.PageObjects
             btnApplyFilter.click();
 
             issueOnGrid(issue.Id).click();
+
+            Relatorio.AddLog(Status.Pass, $"Issue de id '{issue.Id}' encontrada e acessada");
 
             return new ViewPage();
         }

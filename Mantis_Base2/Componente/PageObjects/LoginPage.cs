@@ -1,6 +1,7 @@
 ﻿using Componente.Comum;
 using Dados.DataObjects;
 using OpenQA.Selenium;
+using Relatorios;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,9 +22,15 @@ namespace Componente.PageObjects
         {
             txtUsername.typeText(login.Username);
             txtPassword.typeText(login.Password);
-            btnLogin.Click();
 
-            return new MyViewPage(login);
+            Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
+
+            btnLogin.Click();
+            var main = new MyViewPage(login);
+
+            Relatorio.AddLog(Status.Pass, $"Login realizado com usuário '{login.Username}'");
+
+            return main;
         }
     }
 }

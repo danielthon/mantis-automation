@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Componente\Componente.csproj" />
     <ProjectReference Include="..\DAdos\Dados.csproj" />
+    <ProjectReference Include="..\Relatorios\Relatorios.csproj" />
   </ItemGroup>
 
 </Project>
