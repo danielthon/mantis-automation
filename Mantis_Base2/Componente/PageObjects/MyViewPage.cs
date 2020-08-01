@@ -4,17 +4,9 @@ using System;
 
 namespace Componente.PageObjects
 {
-    public class MyViewPage
+    public class MyViewPage : CommonPage
     {
         internal static string Url { get { return "my_view_page.php"; } }
-
-
-        internal IWebElement spanLogin => Utils.findElement(By.CssSelector("td[class=login-info-left]>span:first-child"));
-
-        internal IWebElement btnMyView=> Utils.findElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
-        internal IWebElement btnViewIssues => Utils.findElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
-        internal IWebElement btnReportIssue => Utils.findElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
-        internal IWebElement btnLogout => Utils.findElement(By.CssSelector("td[class=menu]>a:last-child"));
 
 
         public MyViewPage()
@@ -38,13 +30,6 @@ namespace Componente.PageObjects
                 else
                     throw e;
             }
-        }
-
-        public ReportPage GoToReportIssue()
-        {
-            btnReportIssue.click();
-
-            return new ReportPage();
         }
     }
 }

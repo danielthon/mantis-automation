@@ -11,8 +11,11 @@ namespace Testes.CasosTeste
         public void T001()
         {
             MyViewPage main = new MyViewPage();
-            ReportPage repo = main.GoToReportIssue();
-            main = repo.CadastrarIssue();
+            //ReportPage repo = main.GoToReportIssue();
+            //ViewIssuesPage view = repo.CadastrarIssue();
+            ViewIssuesPage view = main.GoToViewIssues();
+
+            view.SearchAndVerify("0003748");
         }
     }
 }

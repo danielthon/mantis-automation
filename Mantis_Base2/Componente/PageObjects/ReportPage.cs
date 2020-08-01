@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Componente.PageObjects
 {
-    public class ReportPage
+    public class ReportPage : CommonPage
     {
         internal static string Url { get { return "bug_report_page.php"; } }
 
@@ -40,15 +40,22 @@ namespace Componente.PageObjects
             }
         }
 
-        public MyViewPage CadastrarIssue()
+        public ViewIssuesPage CadastrarIssue()
         {
-            dropChooseCategory.dropDownSelectByValue("65");
+            //0003748
+            //[All Projects] 7EI2PODHPN
+            //Teste 003
+            //Teste com caractere é$p&ç;ãl
+            //private
+
+            dropChooseCategory.dropDownSelectByText("[All Projects] 7EI2PODHPN");
             txtSummary.typeText("Teste 003");
             txtDescription.typeText("Teste com caractere é$p&ç;ãl");
             radioPrivate.click();
+
             btnSubmitReport.Click();
 
-            return new MyViewPage();
+            return new ViewIssuesPage();
         }
     }
 }

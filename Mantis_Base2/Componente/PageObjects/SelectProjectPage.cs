@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Componente.PageObjects
 {
-    public class SelectProjectPage
+    public class SelectProjectPage : CommonPage
     {
         internal static string Url { get { return "login_select_proj_page.php"; } }
 

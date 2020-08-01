@@ -93,5 +93,9 @@ namespace Componente.Comum
             else
                 Driver.Navigate().GoToUrl(url);
         }
+        public static void GoBack()
+        {
+            Driver.Navigate().Back();
+        }
     }
 }

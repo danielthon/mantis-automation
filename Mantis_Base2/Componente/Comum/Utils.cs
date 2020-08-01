@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Componente.Exceptions;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -80,6 +81,13 @@ namespace Componente.Comum
             {
                 throw new NoSuchElementException($"Não foi possível encontrar a opção '{opcao}'");
             }
+        }
+
+
+        public static void assert(string esperado, string exibido)
+        {
+            if (esperado != exibido)
+                throw new AssertionException(esperado, exibido);
         }
     }
 }
