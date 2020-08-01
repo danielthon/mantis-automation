@@ -7,11 +7,12 @@ namespace Testes.CasosTeste
     public class Issues
     {
         [Test]
-        [TestCase(TestName = "Só vê se funciona")]
+        [TestCase(TestName = "Report issue and verify")]
         public void T001()
         {
             MyViewPage main = new MyViewPage();
-
+            ReportPage repo = main.GoToReportIssue();
+            main = repo.CadastrarIssue();
         }
     }
 }

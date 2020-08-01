@@ -44,12 +44,10 @@ namespace Componente.Comum
             {
                 case Browser.Chrome:
                     options = new ChromeOptions();
-                    ((ChromeOptions)options).AddArguments("disable-extensions");
                     break;
 
                 case Browser.Firefox:
                     options = new FirefoxOptions();
-                    ((FirefoxOptions)options).AddArguments("disable-extensions");
                     break;
 
                 default:
@@ -57,14 +55,16 @@ namespace Componente.Comum
                     break;
             }
 
-            switch (browser)
+            switch (options)
             {
-                case Browser.Chrome:
-                    driver = new ChromeDriver(EnderecoDrivers, (ChromeOptions)options);
+                case ChromeOptions chrome:
+                    chrome.AddArguments("disable-extensions");
+                    driver = new ChromeDriver(EnderecoDrivers, chrome);
                     break;
 
-                case Browser.Firefox:
-                    driver = new FirefoxDriver(EnderecoDrivers, (FirefoxOptions)options);
+                case FirefoxOptions fox:
+                    fox.AddArguments("disable-extensions");
+                    driver = new FirefoxDriver(EnderecoDrivers, fox);
                     break;
 
                 default:

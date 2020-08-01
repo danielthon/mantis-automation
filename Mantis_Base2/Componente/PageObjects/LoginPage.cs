@@ -11,15 +11,15 @@ namespace Componente.PageObjects
         internal static string Url { get { return "login_page.php"; } }
 
 
-        internal IWebElement txtUsername => Utils.FindElement(By.Name("username"));
-        internal IWebElement txtPassword => Utils.FindElement(By.Name("password"));
-        internal IWebElement btnLogin => Utils.FindElement(By.CssSelector("[type=submit]"));
+        internal IWebElement txtUsername => Utils.findElement(By.Name("username"));
+        internal IWebElement txtPassword => Utils.findElement(By.Name("password"));
+        internal IWebElement btnLogin => Utils.findElement(By.CssSelector("[type=submit]"));
 
 
         public MyViewPage FazerLogin()
         {
-            txtUsername.TypeText("daniel.pinheiro");
-            txtPassword.TypeText("solideogloria");
+            txtUsername.typeText("daniel.pinheiro");
+            txtPassword.typeText("solideogloria");
             btnLogin.Click();
 
             return new MyViewPage();

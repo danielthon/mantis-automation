@@ -9,19 +9,19 @@ namespace Componente.PageObjects
         internal static string Url { get { return "my_view_page.php"; } }
 
 
-        internal IWebElement spanLogin => Utils.FindElement(By.CssSelector("td[class=login-info-left]>span:first-child"));
+        internal IWebElement spanLogin => Utils.findElement(By.CssSelector("td[class=login-info-left]>span:first-child"));
 
-        internal IWebElement btnMyView=> Utils.FindElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
-        internal IWebElement btnViewIssues => Utils.FindElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
-        internal IWebElement btnReportIssue => Utils.FindElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
-        internal IWebElement btnLogout => Utils.FindElement(By.CssSelector("td[class=menu]>a:last-child"));
+        internal IWebElement btnMyView=> Utils.findElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
+        internal IWebElement btnViewIssues => Utils.findElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
+        internal IWebElement btnReportIssue => Utils.findElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
+        internal IWebElement btnLogout => Utils.findElement(By.CssSelector("td[class=menu]>a:last-child"));
 
 
         public MyViewPage()
         {
             try
             {
-                spanLogin.MoveToElement();
+                spanLogin.moveToElement();
             }
             catch (NoSuchElementException e)
             {
@@ -38,6 +38,13 @@ namespace Componente.PageObjects
                 else
                     throw e;
             }
+        }
+
+        public ReportPage GoToReportIssue()
+        {
+            btnReportIssue.click();
+
+            return new ReportPage();
         }
     }
 }
