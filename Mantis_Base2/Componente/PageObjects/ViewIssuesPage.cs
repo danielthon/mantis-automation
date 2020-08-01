@@ -19,19 +19,14 @@ namespace Componente.PageObjects
             txtSearch.moveToElement();
         }
 
-        public ViewIssuesPage SearchAndVerify(Issue issue)
+        public ViewPage SearchAndAccess(Issue issue)
         {
             txtSearch.typeText(issue.Id);
             btnApplyFilter.click();
 
             issueOnGrid(issue.Id).click();
 
-            ViewPage view = new ViewPage();
-            view.VerificarIssue(issue);
-
-            SeleniumWebDriver.GoBack();
-
-            return new ViewIssuesPage();
+            return new ViewPage();
         }
     }
 }

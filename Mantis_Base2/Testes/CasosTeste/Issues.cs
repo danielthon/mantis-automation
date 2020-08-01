@@ -18,6 +18,18 @@ namespace Testes.CasosTeste
         {
             MyViewPage main = new MyViewPage(logins[0]);
             ReportPage repo = main.GoToReportIssue(logins[0]);
+            ViewIssuesPage viewi = repo.CadastrarIssue(issues[0]);
+
+            ViewPage view = viewi.SearchAndAccess(issues[0]);
+            view.VerificarIssue(issues[0]);
+        }
+
+        [Test]
+        [TestCase(TestName = "Add, edit and delete note from issue")]
+        public void T002()
+        {
+            MyViewPage main = new MyViewPage(logins[0]);
+            ReportPage repo = main.GoToReportIssue(logins[0]);
             ViewIssuesPage view = repo.CadastrarIssue(issues[0]);
 
             view.SearchAndVerify(issues[0]);

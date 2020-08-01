@@ -23,5 +23,11 @@ namespace Componente.PageObjects
             Utils.assert(issue.Summary, tdSummary.Text.Replace($"{issue.Id}: ", ""));
             Utils.assert(issue.Description, tdDescription.Text);
         }
+
+        public ViewIssuesPage Voltar()
+        {
+            SeleniumWebDriver.GoBack();
+            return new ViewIssuesPage();
+        }
     }
 }
