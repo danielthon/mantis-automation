@@ -1,4 +1,5 @@
 ﻿using Componente.Comum;
+using Dados.DataObjects;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Componente.PageObjects
         internal IWebElement btnSubmitReport => Utils.findElement(By.CssSelector("form[name='report_bug_form'] [type=submit]"));
 
 
-        public ReportPage()
+        public ReportPage(Login login)
         {
             try
             {
@@ -30,7 +31,7 @@ namespace Componente.PageObjects
                     if (SeleniumWebDriver.URLAtual.Contains(SelectProjectPage.Url))
                     {
                         SelectProjectPage select = new SelectProjectPage();
-                        select.SelecionarProjetoId("145");
+                        select.SelecionarProjetoId(login);
                     }
                     else
                         throw new Exception($"Sistema abriu uma página inesperada: '{SeleniumWebDriver.URLAtual}'");
@@ -40,22 +41,22 @@ namespace Componente.PageObjects
             }
         }
 
-        public ViewIssuesPage CadastrarIssue()
+        public ViewIssuesPage CadastrarIssue(Issue issue)
         {
-            //0003748
-            //[All Projects] 7EI2PODHPN
-            //Teste 003
-            //Teste com caractere é$p&ç;ãl
-            //private
-
-            dropChooseCategory.dropDownSelectByText("[All Projects] 7EI2PODHPN");
-            txtSummary.typeText("Teste 003");
-            txtDescription.typeText("Teste com caractere é$p&ç;ãl");
-            radioPrivate.click();
+            dropChooseCategory.dropDownSelectByText(issue.Category);
+            txtSummary.typeText(issue.Summary);
+            txtDescription.typeText(issue.Description);
+            
+            if(issue.ViewStatus.ToLower() ==  "private")
+                radioPrivate.click();
 
             btnSubmitReport.Click();
 
-            return new ViewIssuesPage();
+            var view = new ViewIssuesPage();
+
+            issue.Id = btnRecentlyVisitedFirst.Text;
+
+            return view;
         }
     }
 }

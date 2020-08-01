@@ -1,4 +1,5 @@
 ﻿using Componente.Comum;
+using Dados.DataObjects;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,19 @@ namespace Componente.PageObjects
         internal IWebElement btnReportIssue => Utils.findElement(By.CssSelector("td[class=menu]>a:nth-child(3)"));
         internal IWebElement btnLogout => Utils.findElement(By.CssSelector("td[class=menu]>a:last-child"));
 
+        internal IWebElement btnRecentlyVisitedFirst => Utils.findElement(By.CssSelector("body>div:nth-of-type(2) a:nth-child(1)"));
+
         public ViewIssuesPage GoToViewIssues()
         {
             btnViewIssues.click();
 
             return new ViewIssuesPage();
         }
-        public ReportPage GoToReportIssue()
+        public ReportPage GoToReportIssue(Login login)
         {
             btnReportIssue.click();
 
-            return new ReportPage();
+            return new ReportPage(login);
         }
     }
 }

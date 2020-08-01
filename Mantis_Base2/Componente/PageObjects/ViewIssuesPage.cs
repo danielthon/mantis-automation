@@ -1,4 +1,5 @@
 ﻿using Componente.Comum;
+using Dados.DataObjects;
 using OpenQA.Selenium;
 using System;
 
@@ -18,21 +19,15 @@ namespace Componente.PageObjects
             txtSearch.moveToElement();
         }
 
-        public ViewIssuesPage SearchAndVerify(string codigo)
+        public ViewIssuesPage SearchAndVerify(Issue issue)
         {
-            //0003748
-            //[All Projects] 7EI2PODHPN
-            //Teste 003
-            //Teste com caractere é$p&ç;ãl
-            //private
-
-            txtSearch.typeText(codigo);
+            txtSearch.typeText(issue.Id);
             btnApplyFilter.click();
 
-            issueOnGrid("0003748").click();
+            issueOnGrid(issue.Id).click();
 
             ViewPage view = new ViewPage();
-            view.VerificarIssue();
+            view.VerificarIssue(issue);
 
             SeleniumWebDriver.GoBack();
 

@@ -1,4 +1,5 @@
 ﻿using Componente.Comum;
+using Dados.DataObjects;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,13 @@ namespace Componente.PageObjects
         internal IWebElement btnLogin => Utils.findElement(By.CssSelector("[type=submit]"));
 
 
-        public MyViewPage FazerLogin()
+        public MyViewPage FazerLogin(Login login)
         {
-            txtUsername.typeText("daniel.pinheiro");
-            txtPassword.typeText("solideogloria");
+            txtUsername.typeText(login.Username);
+            txtPassword.typeText(login.Password);
             btnLogin.Click();
 
-            return new MyViewPage();
+            return new MyViewPage(login);
         }
     }
 }

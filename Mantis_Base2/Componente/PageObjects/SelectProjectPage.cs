@@ -1,4 +1,5 @@
 ﻿using Componente.Comum;
+using Dados.DataObjects;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -15,19 +16,12 @@ namespace Componente.PageObjects
 
         public SelectProjectPage() { }
 
-        public ReportPage SelecionarProjeto(string nomeProjeto)
+        public ReportPage SelecionarProjetoId(Login login)
         {
-            dropChooseProject.dropDownSelectByText(nomeProjeto);
+            dropChooseProject.dropDownSelectByValue(login.ProjetoId);
             btnSelectProject.click();
 
-            return new ReportPage();
-        }
-        public ReportPage SelecionarProjetoId(string idProjeto)
-        {
-            dropChooseProject.dropDownSelectByValue(idProjeto);
-            btnSelectProject.click();
-
-            return new ReportPage();
+            return new ReportPage(login);
         }
     }
 }

@@ -10,6 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DAdos\Dados.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Drivers\chromedriver.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

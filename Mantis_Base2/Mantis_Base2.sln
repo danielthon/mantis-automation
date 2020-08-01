@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Componente", "Componente\Componente.csproj", "{BAA2571C-0D15-4167-881E-850150D6AB0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testes", "Testes\Testes.csproj", "{662D6581-6009-424A-B8F1-4D1CC3DFB04E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testes", "Testes\Testes.csproj", "{662D6581-6009-424A-B8F1-4D1CC3DFB04E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dados", "DAdos\Dados.csproj", "{9217F28A-E8CC-4942-9265-65DE3531128F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{662D6581-6009-424A-B8F1-4D1CC3DFB04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{662D6581-6009-424A-B8F1-4D1CC3DFB04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{662D6581-6009-424A-B8F1-4D1CC3DFB04E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9217F28A-E8CC-4942-9265-65DE3531128F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9217F28A-E8CC-4942-9265-65DE3531128F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9217F28A-E8CC-4942-9265-65DE3531128F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9217F28A-E8CC-4942-9265-65DE3531128F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
 ﻿using Componente.Comum;
+using Dados.DataObjects;
 using OpenQA.Selenium;
 using System;
 
@@ -9,7 +10,7 @@ namespace Componente.PageObjects
         internal static string Url { get { return "my_view_page.php"; } }
 
 
-        public MyViewPage()
+        public MyViewPage(Login login)
         {
             try
             {
@@ -21,8 +22,8 @@ namespace Componente.PageObjects
                 {
                     if (SeleniumWebDriver.URLAtual == SeleniumWebDriver.URLRaiz + LoginPage.Url)
                     {
-                        LoginPage login = new LoginPage();
-                        login.FazerLogin();
+                        LoginPage loginPage = new LoginPage();
+                        loginPage.FazerLogin(login);
                     }
                     else
                         throw new Exception($"Sistema abriu uma página inesperada: '{SeleniumWebDriver.URLAtual}'");
