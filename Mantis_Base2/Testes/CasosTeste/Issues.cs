@@ -10,8 +10,8 @@ namespace Testes.CasosTeste
         [TestCase(TestName = "Só vê se funciona")]
         public void T001()
         {
-            LoginPage login = new LoginPage();
-            login.FazerLogin();
+            MyViewPage main = new MyViewPage();
+
         }
     }
 }

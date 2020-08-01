@@ -20,6 +20,7 @@ namespace Componente.Comum
 
         private static string EnderecoDrivers { get { return AppContext.BaseDirectory + @"\Drivers\"; } }
         public static string URLRaiz { get; set; }
+        public static string URLAtual { get { return Driver.Url; } }
 
         public static void IniciarDriver(string browser)
         {
@@ -71,7 +72,7 @@ namespace Componente.Comum
                     break;
             }
 
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
         }
 
         public static void FinalizarDriver()

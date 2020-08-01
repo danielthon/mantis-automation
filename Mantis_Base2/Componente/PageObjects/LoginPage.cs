@@ -8,14 +8,21 @@ namespace Componente.PageObjects
 {
     public class LoginPage
     {
+        internal static string Url { get { return "login_page.php"; } }
+
+
         internal IWebElement txtUsername => Utils.FindElement(By.Name("username"));
         internal IWebElement txtPassword => Utils.FindElement(By.Name("password"));
         internal IWebElement btnLogin => Utils.FindElement(By.CssSelector("[type=submit]"));
 
 
-        public void FazerLogin()
+        public MyViewPage FazerLogin()
         {
             txtUsername.TypeText("daniel.pinheiro");
+            txtPassword.TypeText("solideogloria");
+            btnLogin.Click();
+
+            return new MyViewPage();
         }
     }
 }
