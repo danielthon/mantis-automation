@@ -4,6 +4,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Componente.Comum
@@ -88,6 +89,22 @@ namespace Componente.Comum
         {
             if (esperado != exibido)
                 throw new AssertionException(esperado, exibido);
+        }
+
+
+        public static string saveScreenshot(string nomeArquivo)
+        {
+            Screenshot print = ((ITakesScreenshot)SeleniumWebDriver.Driver).GetScreenshot();
+
+            string endereco = $@"{Relatorios.Relatorio.enderecoSaida}Screenshots";
+            string enderecoImagem = $@"{endereco}\{nomeArquivo}.jpg";
+
+            if (!Directory.Exists(endereco))
+                Directory.CreateDirectory(endereco);
+
+            print.SaveAsFile(enderecoImagem, ScreenshotImageFormat.Jpeg);
+
+            return enderecoImagem;
         }
     }
 }

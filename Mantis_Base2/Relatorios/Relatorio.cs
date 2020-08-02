@@ -21,10 +21,12 @@ namespace Relatorios
     {
         private static ExtentTest sequenciaAtual;
         private static AventStack.ExtentReports.ExtentReports relatorio;
+        
+        public static string enderecoSaida { get; set; }
 
         public static string PrepararRelatorio()
         {
-            string enderecoSaida = AppContext.BaseDirectory + $@"\RELATORIOS\Run_{DateTime.Now.ToString("yyyyMMdd_hhmmss")}\";
+            enderecoSaida = AppContext.BaseDirectory + $@"\RELATORIOS\Run_{DateTime.Now.ToString("yyyyMMdd_hhmmss")}\";
             Directory.CreateDirectory(enderecoSaida);
 
             var html = new ExtentHtmlReporter(enderecoSaida);
