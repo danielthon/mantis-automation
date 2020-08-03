@@ -1,6 +1,6 @@
 # mantis-automation
 
-Projeto de amostra em **C#** de teste automatizado para aplicação **MantisBT**.
+Projeto de amostra em **C#** de teste automatizado para aplicação **MantisBT** 🦗
 
 
 ## Pacotes & Recursos
@@ -14,11 +14,14 @@ Projeto de amostra em **C#** de teste automatizado para aplicação **MantisBT**
 
 ## Casos de teste
 
-Apenas 1 caso de teste foi implementado. São independentes, podendo ser executados simultaneamente.
+Apenas 2 casos de teste foram implementados. São independentes, podendo ser executados simultaneamente.
 
 - **Issue.T001** – "Report new issue and verify"
+- **Issue.T002** – "Add, edit and delete note from issue"
 
 
-> Para executar em diferentes *browsers* via linha de comando do NUnit, utilize o parâmetro 
-> `--tp:browser=chrome` para utilizar o Chrome ou
-> `--tp:browser=firefox` para utilizar o Mozila Firefox
+> Para executar em diferentes *browsers* via linha de comando do NUnit, utilize os parâmetros
+>
+>> `--tp:browser=chrome` para utilizar o Chrome ou
+>>
+>> `--tp:browser=firefox` para utilizar o Mozila Firefox
