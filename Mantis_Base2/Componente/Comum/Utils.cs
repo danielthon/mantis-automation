@@ -108,12 +108,12 @@ namespace Componente.Comum
             Screenshot print = ((ITakesScreenshot)SeleniumWebDriver.Driver).GetScreenshot();
 
             string endereco = $@"{Relatorios.Relatorio.enderecoSaida}Screenshots";
-            string enderecoImagem = $@"{endereco}\{nomeArquivo}.jpg";
+            string enderecoImagem = $@"{endereco}\{nomeArquivo}.png";
 
             if (!Directory.Exists(endereco))
                 Directory.CreateDirectory(endereco);
 
-            print.SaveAsFile(enderecoImagem, ScreenshotImageFormat.Jpeg);
+            print.SaveAsFile(enderecoImagem, ScreenshotImageFormat.Png);
 
             return enderecoImagem;
         }
