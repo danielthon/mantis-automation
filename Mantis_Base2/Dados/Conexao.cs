@@ -10,7 +10,7 @@ namespace Dados
 {
     public class Conexao
     {
-        public static List<T> GetDadosCsv<T>() where T : new()
+        public static List<T> getDadosCsv<T>() where T : new()
         {
             string endereco = AppContext.BaseDirectory + $@"\Entradas\ArquivosCsv\{typeof(T).Name}.csv";
 

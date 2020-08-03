@@ -24,7 +24,7 @@ namespace Relatorios
         
         public static string enderecoSaida { get; set; }
 
-        public static string PrepararRelatorio()
+        public static string prepararRelatorio()
         {
             enderecoSaida = AppContext.BaseDirectory + $@"\RELATORIOS\Run_{DateTime.Now.ToString("yyyyMMdd_hhmmss")}\";
             Directory.CreateDirectory(enderecoSaida);
@@ -38,40 +38,40 @@ namespace Relatorios
 
             return enderecoSaida;
         }
-        public static void FinalizarRelatorio()
+        public static void finalizarRelatorio()
         {
             relatorio.Flush();
         }
 
-        public static void PreTeste(string nomeFixture, string nomeTest, string descricaoTest)
+        public static void preTeste(string nomeFixture, string nomeTest, string descricaoTest)
         {
             sequenciaAtual = relatorio.CreateTest($"{nomeFixture}.{nomeTest}", descricaoTest);
             sequenciaAtual.AssignCategory(nomeFixture);
 
             
         }
-        public static void PosTeste(Relatorios.Status status)
+        public static void posTeste(Relatorios.Status status)
         {
             switch(status)
             {
                 case Status.Pass:
-                    AddLog(Status.Pass, "Teste finalizado com sucesso"); break;
+                    addLog(Status.Pass, "Teste finalizado com sucesso"); break;
                 case Status.Fail:
-                    AddLog(Status.Fail, "Não foi possível concluir o teste"); break;
+                    addLog(Status.Fail, "Não foi possível concluir o teste"); break;
                 default:
-                    AddLog(Status.Warning, "Não foi possível concluir o teste por motivo desconhecido"); break;
+                    addLog(Status.Warning, "Não foi possível concluir o teste por motivo desconhecido"); break;
             }
         }
 
-        public static void AddLog(Relatorios.Status status, string descricao)
+        public static void addLog(Relatorios.Status status, string descricao)
         {
             sequenciaAtual.Log((AventStack.ExtentReports.Status)(int)status, descricao);
             Console.WriteLine($"{DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss.fff")} - {descricao}");
         }
-        public static void AddLog(Exception ex, string enderecocreenshot)
+        public static void addLog(Exception ex, string enderecoScreenshot)
         {
             sequenciaAtual.Log((AventStack.ExtentReports.Status)(int)Status.Debug, $"<pre>{ex.StackTrace}</pre>");
-            sequenciaAtual.Log((AventStack.ExtentReports.Status)(int)Status.Fail, ex.Message + $"<br><img data-featherlight=\"{enderecocreenshot}\" class=\"step-img\" src=\"{enderecocreenshot}\" data-src=\"{enderecocreenshot}\" width=\"200\">");
+            sequenciaAtual.Log((AventStack.ExtentReports.Status)(int)Status.Fail, ex.Message + $"<br><img data-featherlight=\"{enderecoScreenshot}\" class=\"step-img\" src=\"{enderecoScreenshot}\" data-src=\"{enderecoScreenshot}\" width=\"200\">");
             Console.WriteLine($"{DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss.fff")} - {ex.Message}");
         }
     }
