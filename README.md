@@ -1,6 +1,8 @@
-# mantis-automation
+# mantis-automation 🦗
 
-Projeto de amostra em **C#** de teste automatizado para aplicação **MantisBT** 🦗
+![](https://img.shields.io/github/repo-size/danielthon/mantis-automation)
+
+Projeto de amostra em **C#** de teste automatizado para aplicação **MantisBT** 
 
 
 ## Pacotes & Recursos
