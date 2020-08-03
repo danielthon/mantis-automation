@@ -18,8 +18,8 @@ namespace Testes.CasosTeste
         private static string descricaoTest { get { return TestContext.CurrentContext.Test.Name; } }
 
 
-        public List<Login> logins = Conexao.GetDadosCsv<Login>();
-        public List<Issue> issues = Conexao.GetDadosCsv<Issue>();
+        public List<Login> logins = Conexao.getDadosCsv<Login>();
+        public List<Issue> issues = Conexao.getDadosCsv<Issue>();
 
 
         [Test]
@@ -28,16 +28,16 @@ namespace Testes.CasosTeste
         {
             try
             {
-                MyViewPage main = new MyViewPage(logins[0]);
-                ReportPage repo = main.GoToReportIssue(logins[0]);
-                ViewIssuesPage viewi = repo.CadastrarIssue(issues[0]);
+                var myView = new MyViewPage(logins[0]);
+                var reportIssue = myView.GoToReportIssue(logins[0]);
+                var viewIssues = reportIssue.CadastrarIssue(issues[0]);
 
-                ViewPage view = viewi.SearchAndAccess(issues[0]);
+                var view = viewIssues.SearchAndAccess(issues[0]);
                 view.VerificarIssue(issues[0]);
             }
             catch (Exception e)
             {
-                Relatorio.AddLog(e, Utils.saveScreenshot($"{nomeFixture}_{nomeTest}"));
+                Relatorio.addLog(e, Utils.saveScreenshot($"{nomeFixture}_{nomeTest}"));
             }
         }
 
@@ -47,12 +47,22 @@ namespace Testes.CasosTeste
         {
             try
             {
-                MyViewPage main = new MyViewPage(logins[0]);
-                //incompleto
+                var myView = new MyViewPage(logins[0]);
+                var viewIssues = myView.GoToViewIssues();
+                var view = viewIssues.SearchAndAccess(issues[1]);
+                
+                view.AdicionarNote("nota NOVA com caractere é$p&çiãl");
+                view.VerificarNote(2, "nota NOVA com caractere é$p&çiãl");
+
+                view.EditarNote(2, "nota ANTIGA com caractere é$p&çiãl");
+                view.VerificarNote(2, "nota ANTIGA com caractere é$p&çiãl");
+
+                view.ExcluirNote(2);
+                view.VerificarExclusaoNote("nota ANTIGA com caractere é$p&çiãl");
             }
             catch (Exception e)
             {
-                Relatorio.AddLog(e, Utils.saveScreenshot($"{nomeFixture}_{nomeTest}"));
+                Relatorio.addLog(e, Utils.saveScreenshot($"{nomeFixture}_{nomeTest}"));
             }
         }
 
@@ -60,16 +70,16 @@ namespace Testes.CasosTeste
         [SetUp]
         public void TestSetUp()
         {
-            Relatorio.PreTeste(nomeFixture.Substring(nomeFixture.LastIndexOf('.') + 1), nomeTest, descricaoTest);
+            Relatorio.preTeste(nomeFixture.Substring(nomeFixture.LastIndexOf('.') + 1), nomeTest, descricaoTest);
         }
         [TearDown]
         public void TestTearDown()
         {
             switch (TestContext.CurrentContext.Result.Outcome.Status)
             {
-                case TestStatus.Passed: Relatorio.PosTeste(Status.Pass); break;
-                case TestStatus.Failed: Relatorio.PosTeste(Status.Fail); break;
-                default: Relatorio.PosTeste(Status.Warning); break;
+                case TestStatus.Passed: Relatorio.posTeste(Status.Pass); break;
+                case TestStatus.Failed: Relatorio.posTeste(Status.Fail); break;
+                default: Relatorio.posTeste(Status.Warning); break;
             }
         }
     }

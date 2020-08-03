@@ -21,12 +21,12 @@ namespace Componente.PageObjects
         {
             dropChooseProject.dropDownSelectByValue(login.ProjetoId);
 
-            Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
+            Relatorio.addLog(Status.Info, $"Página {Url} acessada");
 
             btnSelectProject.click();
             var repo = new ReportPage(login);
 
-            Relatorio.AddLog(Status.Pass, $"Projeto '{login.ProjetoId}' encontrado e selecionado");
+            Relatorio.addLog(Status.Pass, $"Projeto '{login.ProjetoId}' encontrado e selecionado");
 
             return repo;
         }

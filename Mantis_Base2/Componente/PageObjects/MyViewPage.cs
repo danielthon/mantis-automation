@@ -16,7 +16,7 @@ namespace Componente.PageObjects
             try
             {
                 spanLogin.moveToElement();
-                Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
+                Relatorio.addLog(Status.Info, $"Página {Url} acessada");
             }
             catch (NoSuchElementException e)
             {

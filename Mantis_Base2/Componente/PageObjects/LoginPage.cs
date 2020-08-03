@@ -23,12 +23,12 @@ namespace Componente.PageObjects
             txtUsername.typeText(login.Username);
             txtPassword.typeText(login.Password);
 
-            Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
+            Relatorio.addLog(Status.Info, $"Página {Url} acessada");
 
             btnLogin.Click();
             var main = new MyViewPage(login);
 
-            Relatorio.AddLog(Status.Pass, $"Login realizado com usuário '{login.Username}'");
+            Relatorio.addLog(Status.Pass, $"Login realizado com usuário '{login.Username}'");
 
             return main;
         }

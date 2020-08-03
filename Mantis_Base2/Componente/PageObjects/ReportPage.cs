@@ -24,7 +24,7 @@ namespace Componente.PageObjects
             try
             {
                 dropChooseCategory.moveToElement();
-                Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
+                Relatorio.addLog(Status.Info, $"Página {Url} acessada");
             }
             catch (NoSuchElementException e)
             {
@@ -58,7 +58,7 @@ namespace Componente.PageObjects
 
             issue.Id = btnRecentlyVisitedFirst.Text;
 
-            Relatorio.AddLog(Status.Pass, $"Issue cadastrada, gerada com id '{issue.Id}'");
+            Relatorio.addLog(Status.Pass, $"Issue cadastrada, gerada com id '{issue.Id}'");
 
             return view;
         }

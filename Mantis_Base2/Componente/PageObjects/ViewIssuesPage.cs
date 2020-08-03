@@ -18,7 +18,7 @@ namespace Componente.PageObjects
         public ViewIssuesPage()
         {
             txtSearch.moveToElement();
-            Relatorio.AddLog(Status.Info, $"Página {Url} acessada");
+            Relatorio.addLog(Status.Info, $"Página {Url} acessada");
         }
 
         public ViewPage SearchAndAccess(Issue issue)
@@ -28,7 +28,7 @@ namespace Componente.PageObjects
 
             issueOnGrid(issue.Id).click();
 
-            Relatorio.AddLog(Status.Pass, $"Issue de id '{issue.Id}' encontrada e acessada");
+            Relatorio.addLog(Status.Pass, $"Issue de id '{issue.Id}' encontrada e acessada");
 
             return new ViewPage();
         }

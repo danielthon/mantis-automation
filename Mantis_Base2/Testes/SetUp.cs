@@ -10,7 +10,7 @@ namespace Testes
         [OneTimeSetUp]
         public static void GlobalSetUp()
         {
-            Relatorio.PrepararRelatorio();
+            Relatorio.prepararRelatorio();
 
             SeleniumWebDriver.IniciarDriver(
                 TestContext.Parameters.Get("browser", "chrome")
@@ -24,7 +24,7 @@ namespace Testes
         {
             SeleniumWebDriver.FinalizarDriver();
 
-            Relatorio.FinalizarRelatorio();
+            Relatorio.finalizarRelatorio();
         }
     }
 }

@@ -22,6 +22,17 @@ namespace Componente.Comum
                 throw new NoSuchElementException($"Não foi possível encontrar o elemento de {by.ToString()}. | \"{e.Message}\"");
             }
         }
+        internal static IWebElement findElement(this IWebElement elemento, By by)
+        {
+            try
+            {
+                return elemento.FindElement(by).moveToElement();
+            }
+            catch (Exception e)
+            {
+                throw new NoSuchElementException($"Não foi possível encontrar o elemento de {by.ToString()}. | \"{e.Message}\"");
+            }
+        }
         internal static IWebElement moveToElement(this IWebElement elemento)
         {
             Actions actions = new Actions(SeleniumWebDriver.Driver);
